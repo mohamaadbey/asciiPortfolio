@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mohammad Hosseini — Software Developer Portfolio. Authentic ASCII art, Unix terminal aesthetics, clean architecture, and modern web applications.">
+  <meta name="author" content="Mohammad Hosseini">
+  <meta name="theme-color" content="#F5F2EB">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Mohammad Hosseini | Software Developer">
+  <meta property="og:description" content="Building useful software with clean architecture and great user experiences.">
+  <meta property="og:type" content="website">
+
+  <title>Mohammad Hosseini | Software Developer</title>
+
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-theme="paper">
+
+  <div class="site-wrapper">
+    <!-- Top Bar Navigation (Matching sample.png) -->
+    <header class="site-header">
+      <div class="header-user">
+        <a href="#home" class="terminal-id">mohammad@portfolio</a>
+      </div>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">/home</a></li>
+          <li><a href="#projects" class="nav-link">projects</a></li>
+          <li><a href="#skills" class="nav-link">skills</a></li>
+          <li><a href="#about" class="nav-link">about</a></li>
+          <li><a href="#contact" class="nav-link">contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- HERO / INTRODUCTION -->
+      <section id="home" class="section hero-section" aria-label="Introduction">
+        <div class="hero-grid">
+          <!-- Left Column: Typography & Bio -->
+          <div class="hero-left">
+            <pre class="ascii-name" aria-label="Mohammad Hosseini">
+█   █  ███  █   █  ███  █   █ █   █  ███  ████ 
+██ ██ █   █ █   █ █   █ ██ ██ ██ ██ █   █ █   █
+█ █ █ █   █ █████ █████ █ █ █ █ █ █ █████ █   █
+█   █ █   █ █   █ █   █ █   █ █   █ █   █ █   █
+█   █  ███  █   █ █   █ █   █ █   █ █   █ ████ 
+
+█   █  ███   ████  ████ █████ ███ █   █ ███
+█   █ █   █ █     █     █      █  ██  █  █ 
+█████ █   █  ███   ███  ████   █  █ █ █  █ 
+█   █ █   █     █     █ █      █  █  ██  █ 
+█   █  ███  ████  ████  █████ ███ █   █ ███</pre>
+
+            <div class="prompt-line">
+              <span class="prompt-symbol">&gt;</span><span class="typing-cursor">_</span>
+            </div>
+
+            <h1 class="hero-role">Software Developer</h1>
+
+            <p class="hero-bio">
+              Building useful software<br>
+              with clean architecture<br>
+              and great user experiences.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="action-bracket-link">[ 01. Projects ]</a>
+              <a href="#about" class="action-bracket-link">[ 02. About    ]</a>
+              <a href="#contact" class="action-bracket-link">[ 03. Contact  ]</a>
+            </div>
+          </div>
+
+          <!-- Right Column: Mountain Landscape ASCII Art (Matching sample.png) -->
+          <div class="hero-right">
+            <div class="ascii-art-wrapper">
+              <pre class="ascii-mountain" aria-label="Mountain landscape ASCII illustration">
+                               .  .  .  .  .  .  .  .  .
+                             .  .  .  .  .  .  .  .  .  .
+                 \ /       .  .  .  .  .  .  .  .  .  .  .
+                  v      .  .  .  .  .  .  .  .  .  .  .  .
+                       .  .  .  .  .  .  .  .  .  .  .  .  .
+                     .  .  .  .  .  .  .  .-------.  .  .  .
+           \ /     .  .  .  .  .  .  .  .' /////// '.  .  .  .
+            v    .  .  .  .  .  .  .  / /////////// \  .  .  .
+               .  .  .  .  .  .  .  ( ///////////// ) .  .  .
+             .  .  .  .  .  .  .  .  \ /////////// /  .  .  .
+           .  .  .  .  .  .  .  .  .  '. /////// .'  .  .  .
+         .  .  .  .  .  .  .  .  .  .  '-------'  .  .  .  .
+       .  .  .  .  .  .  .  .  /\  .  .  .  .  .  .  .  .  .
+     .  .  .  .  .  .  .  .   /  \   .  .  .  .  .  .  .  .
+   .  .  .  .  .  .  .  .    / |  \    .  .  .  .  .  .  .
+ .  .  .  .  .  .  .  .     /  |   \     .  .  .  .  .  .
+.  .  .  .  .   /\  .      / / | \  \      .  .   /\  .  .
+ .  .  .  .    /  \       / /  |  \  \          /  \  .
+  .  .  .     / /\ \     / /   |   \  \        / /\ \
+   .  .      / /  \ \   / /    |    \  \      / /  \ \
+    .       / / /\ \ \ / /     |     \  \    / / /\ \ \
+           / / /  \ \ V /  / \ |      \  \  / / /  \ \ \
+   /\     / / / /\ \   /  /   \|       \  \/ / / /\ \ \ \    /\
+  //\\   / / / /  \ \ /  /     \        \   / / /  \ \ \ \  //\\
+ ///\\\  ^  / / /\ \ V  /       \        \ V / / /\ \ \  ^ ///\\\
+////\\\\/|\  / /  \    /         \        \   / /  \ \  /|\///\\\\
+   ||   /|\\  / /\ \  /           \        \ / / /\ \  /|\\  ||
+   ||  //|\\\  || || /             \        V   || || //|\\\ ||
+================================================================</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- FEATURED PROJECTS -->
+      <section id="projects" class="section projects-section" aria-label="Featured Projects">
+        <h2 class="section-heading">&gt; Featured Projects</h2>
+
+        <div class="projects-grid">
+          <!-- Project 1: Anbarchi -->
+          <article class="project-card" data-project-id="anbarchi">
+            <div class="project-ascii-icon">
+              <pre>
+   .( :o).
+ .---------.
+ | [=] [=] |
+ | [=] [=] |
+ '---------'</pre>
+            </div>
+            <h3 class="project-title">Anbarchi</h3>
+            <p class="project-subtitle">Inventory Management</p>
+            <div class="project-tag">Full-Stack</div>
+            <div class="project-action">
+              <button class="project-btn" data-project="anbarchi" aria-label="View Anbarchi project details">[ View Project ]</button>
+            </div>
+          </article>
+
+          <!-- Project 2: PakMart -->
+          <article class="project-card" data-project-id="pakmart">
+            <div class="project-ascii-icon">
+              <pre>
+  .-------.
+ /  ===    \
+| [=] [=]   |
+|   $$$     |
+ '---------'</pre>
+            </div>
+            <h3 class="project-title">PakMart</h3>
+            <p class="project-subtitle">E-commerce Platform</p>
+            <div class="project-tag">Full-Stack</div>
+            <div class="project-action">
+              <button class="project-btn" data-project="pakmart" aria-label="View PakMart project details">[ View Project ]</button>
+            </div>
+          </article>
+
+          <!-- Project 3: Kavich -->
+          <article class="project-card" data-project-id="kavich">
+            <div class="project-ascii-icon">
+              <pre>
+   .-----.
+  ( MENU  )
+   \ === /
+    _| |_</pre>
+            </div>
+            <h3 class="project-title">Kavich</h3>
+            <p class="project-subtitle">Online Menu Platform</p>
+            <div class="project-tag">Full-Stack</div>
+            <div class="project-action">
+              <button class="project-btn" data-project="kavich" aria-label="View Kavich project details">[ View Project ]</button>
+            </div>
+          </article>
+
+          <!-- Project 4: LMS -->
+          <article class="project-card" data-project-id="lms">
+            <div class="project-ascii-icon">
+              <pre>
+    .-----.
+ .--| LMS |
+ |  | === |
+ '--------'</pre>
+            </div>
+            <h3 class="project-title">LMS</h3>
+            <p class="project-subtitle">Learning Management</p>
+            <div class="project-tag">Full-Stack</div>
+            <div class="project-action">
+              <button class="project-btn" data-project="lms" aria-label="View LMS project details">[ View Project ]</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="projects-subline">
+          <span class="subline-arrow">&gt;</span> All projects are open source (or live demo) — Check my <a href="https://github.com/mohammadhosseini" target="_blank" rel="noopener noreferrer" class="text-link">GitHub</a> for more.
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- TECH STACK & SKILLS -->
+      <section id="skills" class="section skills-section" aria-label="Technical Skills and Stack">
+        <div class="skills-grid">
+          <!-- Left Column: Categorized Tree -->
+          <div class="skills-left">
+            <h2 class="section-heading">&gt; Tech Stack</h2>
+            
+            <div class="stack-tree">
+              <div class="tree-group">
+                <div class="group-header"><span class="tree-marker">·&gt; -</span> <span class="group-title">Frontend</span></div>
+                <ul class="tree-items">
+                  <li>React / Next.js</li>
+                  <li>TypeScript / JavaScript</li>
+                  <li>HTML / CSS / Tailwind</li>
+                </ul>
+              </div>
+
+              <div class="tree-group">
+                <div class="group-header"><span class="tree-marker">·&gt; -</span> <span class="group-title">Backend</span></div>
+                <ul class="tree-items">
+                  <li>Node.js / Express</li>
+                  <li>REST API / Socket.IO</li>
+                </ul>
+              </div>
+
+              <div class="tree-group">
+                <div class="group-header"><span class="tree-marker">·&gt; -</span> <span class="group-title">Database</span></div>
+                <ul class="tree-items">
+                  <li>PostgreSQL / MySQL</li>
+                  <li>MongoDB</li>
+                </ul>
+              </div>
+
+              <div class="tree-group">
+                <div class="group-header"><span class="tree-marker">·&gt; -</span> <span class="group-title">DevOps</span></div>
+                <ul class="tree-items">
+                  <li>Docker / Nginx</li>
+                  <li>Linux / Git</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Terminal Meter Box & Mascot (Matching sample.png) -->
+          <div class="skills-right">
+            <div class="terminal-box">
+              <div class="box-cmd">&gt; skills --list</div>
+              <div class="skill-meter-list">
+                <div class="meter-row">
+                  <span class="skill-name">React</span>
+                  <span class="skill-bar">████████████████████</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="meter-row">
+                  <span class="skill-name">TypeScript</span>
+                  <span class="skill-bar">████████████████░░░░</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="meter-row">
+                  <span class="skill-name">Node.js</span>
+                  <span class="skill-bar">███████████████░░░░░</span>
+                  <span class="skill-pct">80%</span>
+                </div>
+                <div class="meter-row">
+                  <span class="skill-name">PostgreSQL</span>
+                  <span class="skill-bar">██████████████░░░░░░</span>
+                  <span class="skill-pct">75%</span>
+                </div>
+                <div class="meter-row">
+                  <span class="skill-name">Docker</span>
+                  <span class="skill-bar">█████████████░░░░░░░</span>
+                  <span class="skill-pct">70%</span>
+                </div>
+                <div class="meter-row">
+                  <span class="skill-name">Next.js</span>
+                  <span class="skill-bar">████████████░░░░░░░░</span>
+                  <span class="skill-pct">60%</span>
+                </div>
+              </div>
+
+              <div class="cat-mascot-row">
+                <pre class="ascii-cat" aria-label="ASCII cat mascot">
+     /\     /\
+    /  '---'  \
+   (  - •   • - )
+    \    o    /
+  _  /       \
+ ( )/  |   |  \
+  \_\  |___|  /</pre>
+                <div class="cat-motto">
+                  <div>Keep</div>
+                  <div>building</div>
+                  <div>...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+
+      <!-- ABOUT ME -->
+      <section id="about" class="section about-section" aria-label="About Mohammad Hosseini">
+        <div class="about-grid">
+          <div class="about-left">
+            <h2 class="section-heading">&gt; About Me</h2>
+            <div class="about-paragraphs">
+              <p>
+                I'm <strong>Mohammad Hosseini</strong>, a Computer Science graduate from <strong>Golestan University</strong>. I enjoy turning ideas into real products and learning new technologies.
+              </p>
+              <p>
+                Currently focused on full-stack development, clean code and scalable systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-right">
+            <div class="badge-card">
+              <pre class="badge-code-icon">
+  \  /  /
+ &lt;  /  &gt;
+  /  /  \</pre>
+              <div class="badge-motto">
+                <span>Better</span>
+                <span>Code</span>
+                <span>Better</span>
+                <span>Tomorrow</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" role="separator"></div>
+    </main>
+
+    <!-- FOOTER / CONTACT (Matching sample.png) -->
+    <footer id="contact" class="site-footer" aria-label="Contact and Social Links">
+      <div class="footer-left">
+        <button id="cli-trigger" class="footer-prompt-btn" aria-label="Click to launch interactive terminal">
+          <span class="prompt-user">mohammad@portfolio</span>:<span class="prompt-path">~</span>$ <span class="blink-cursor">▋</span>
+        </button>
+      </div>
+
+      <div class="footer-right">
+        <div class="social-links">
+          <a href="https://github.com/mohammadhosseini" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub Profile">GitHub</a>
+          <a href="https://linkedin.com/in/mohammadhosseini" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn Profile">LinkedIn</a>
+          <a href="https://t.me/mohammadhosseini" target="_blank" rel="noopener noreferrer" class="social-link" title="Telegram">Telegram</a>
+          <button id="copy-email-btn" class="social-link email-btn" title="Copy email address" aria-label="Copy email address">Email</button>
+          <button id="theme-toggle" class="social-link tool-btn" title="Toggle theme (t)" aria-label="Toggle theme">[ ☀ Theme ]</button>
+          <button id="sound-toggle" class="social-link tool-btn" title="Toggle sound" aria-label="Toggle audio feedback">[ 🔈 Sound ]</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- PROJECT DETAIL DIALOG / MODAL -->
+  <dialog id="project-modal" class="ascii-modal" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-topbar">
+        <span class="modal-meta" id="modal-meta">&gt; project --inspect</span>
+        <button id="modal-close-btn" class="modal-close" aria-label="Close dialog">[ X ]</button>
+      </div>
+      
+      <div class="modal-icon-container" id="modal-icon">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <h3 class="modal-title" id="modal-title">Project Name</h3>
+      <div class="modal-tagline" id="modal-tagline">Category / Architecture</div>
+      
+      <div class="modal-body-content" id="modal-desc">
+        <!-- Description text -->
+      </div>
+
+      <div class="modal-tech-stack">
+        <div class="stack-label">&gt; Technologies:</div>
+        <div class="stack-pills" id="modal-tech">
+          <!-- Badges -->
+        </div>
+      </div>
+
+      <div class="modal-clone-row">
+        <div class="clone-label">&gt; git clone:</div>
+        <div class="clone-code-container">
+          <code class="clone-code" id="modal-clone">git clone https://github.com/mohammadhosseini/...</code>
+          <button id="clone-copy-btn" class="clone-copy-btn" title="Copy clone command">[ Copy ]</button>
+        </div>
+      </div>
+
+      <div class="modal-actions" id="modal-actions">
+        <a href="#" id="modal-live-link" target="_blank" rel="noopener noreferrer" class="modal-action-btn live-btn">[ Live Demo ]</a>
+        <a href="#" id="modal-repo-link" target="_blank" rel="noopener noreferrer" class="modal-action-btn repo-btn">[ GitHub Repo ]</a>
+        <button id="modal-dismiss-btn" class="modal-action-btn dismiss-btn">[ Esc / Close ]</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- INTERACTIVE TERMINAL CONSOLE DIALOG -->
+  <dialog id="terminal-modal" class="ascii-modal cli-modal" aria-labelledby="cli-modal-title" aria-modal="true">
+    <div class="modal-box cli-box">
+      <div class="modal-topbar">
+        <span class="modal-meta" id="cli-modal-title">portfolio-shell (v1.0.0) — Type 'help' for commands</span>
+        <button id="cli-close-btn" class="modal-close" aria-label="Close terminal">[ X ]</button>
+      </div>
+
+      <div class="cli-history" id="cli-history" tabindex="0" role="region" aria-label="Command history">
+        <div class="cli-row system-msg">Welcome to Mohammad Hosseini's portfolio terminal.</div>
+        <div class="cli-row system-msg">Available commands: <span class="hl">projects</span>, <span class="hl">skills</span>, <span class="hl">about</span>, <span class="hl">contact</span>, <span class="hl">theme</span>, <span class="hl">sound</span>, <span class="hl">cat</span>, <span class="hl">clear</span>, <span class="hl">exit</span></div>
+      </div>
+
+      <form id="cli-form" class="cli-form" autocomplete="off">
+        <label for="cli-input" class="cli-prompt-label">mohammad@portfolio:~$</label>
+        <input type="text" id="cli-input" class="cli-input" autofocus spellcheck="false" placeholder="type a command...">
+      </form>
+    </div>
+  </dialog>
+
+  <!-- FEEDBACK TOAST -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite">
+    <span id="toast-text">[ Copied to clipboard! ]</span>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
