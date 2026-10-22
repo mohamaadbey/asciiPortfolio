@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tagline: 'AI-Powered Warehouse & Stock Optimization Platform',
       description: 'An intelligent inventory management system designed to streamline warehouse stock control, forecast replenishment cycles, and automate SKU tracking. Features real-time inventory auditing, anomaly detection, and automated stock reorder triggers.',
       techStack: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Docker', 'REST API'],
-      github: 'https://github.com/mohammadhosseini/anbarchi',
+      github: 'https://github.com/mohamaadbey/anbarchi',
       demo: 'https://anbarchi.demo.app',
       asciiIcon: `   .( :o).
  .---------.
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tagline: 'Modern Multi-Vendor Retail & Order Processing System',
       description: 'A robust e-commerce platform built with modular component architecture and responsive user experience. Features dynamic catalog filtering, shopping cart persistence, secure payment workflow, and merchant inventory synchronization.',
       techStack: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-      github: 'https://github.com/mohammadhosseini/pakmart',
-      demo: 'https://pakmart.demo.app',
+      github: 'https://github.com/mohamaadbey/OnlineStore',
+      demo: 'https://pakmart.org',
       asciiIcon: `  .-------.
  /  ===    \\
 | [=] [=]   |
@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tagline: 'Interactive Digital Menu & Hospitality Ordering Platform',
       description: 'A responsive digital dining menu engineered for restaurants and cafes. Enables real-time menu item curation, category browsing, multi-language ingredient descriptions, and rapid QR code-based ordering workflows.',
       techStack: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Express', 'MySQL'],
-      github: 'https://github.com/mohammadhosseini/kavich',
-      demo: 'https://kavich.demo.app',
+      github: 'https://github.com/mohamaadbey/kavichcafe',
+      demo: 'https://kavich1.ir',
       asciiIcon: `   .-----.
   ( MENU  )
    \\ === /
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tagline: 'Comprehensive Academic Platform & Course Workflow',
       description: 'A full-stack learning management architecture facilitating student enrollment, interactive module tracking, assignment review pipelines, and instructor assessment tools with strict role-based access control.',
       techStack: ['TypeScript', 'React', 'Next.js', 'PostgreSQL', 'Docker', 'Linux'],
-      github: 'https://github.com/mohammadhosseini/lms',
+      github: 'https://github.com/mohamaadbey/lms',
       demo: 'https://lms.demo.app',
       asciiIcon: `    .-----.
  .--| LMS |
@@ -441,9 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       case 'contact':
         appendCliOutput(`Email:    ${DEV_EMAIL}`);
-        appendCliOutput('GitHub:   https://github.com/mohammadhosseini');
-        appendCliOutput('LinkedIn: https://linkedin.com/in/mohammadhosseini');
-        appendCliOutput('Telegram: https://t.me/mohammadhosseini');
+        appendCliOutput('GitHub:   https://github.com/mohamaadbey');
+        appendCliOutput('LinkedIn: https://linkedin.com/in/mohamaadbey');
+        appendCliOutput('Telegram: https://t.me/mohamaadbey');
         break;
 
       case 'theme':
