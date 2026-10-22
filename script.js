@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
       techStack: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Docker', 'REST API'],
       github: 'https://github.com/mohammadhosseini/anbarchi',
       demo: 'https://anbarchi.demo.app',
-      asciiIcon: `  .-----------.
-  |  [=] [=]  |
-  |  |AI|BOX| |
-  |  [=] [=]  |
-  '-----------'`
+      asciiIcon: `   .( :o).
+ .---------.
+ | [=] [=] |
+ | [=] [=] |
+ '---------'`
     },
     pakmart: {
       id: 'pakmart',
@@ -36,12 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
       techStack: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
       github: 'https://github.com/mohammadhosseini/pakmart',
       demo: 'https://pakmart.demo.app',
-      asciiIcon: `  .-----------.
-  |  ___/\\___ |
-  |  | SHOP | |
-  |  |______| |
-  |   (o) (o) |
-  '-----------'`
+      asciiIcon: `  .-------.
+ /  ===    \\
+| [=] [=]   |
+|   $$$     |
+ '---------'`
     },
     kavich: {
       id: 'kavich',
@@ -52,12 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
       techStack: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Express', 'MySQL'],
       github: 'https://github.com/mohammadhosseini/kavich',
       demo: 'https://kavich.demo.app',
-      asciiIcon: `  .-----------.
-  |   .---.   |
-  |  ( MENU ) |
-  |   \\===/   |
-  |   _|_|_   |
-  '-----------'`
+      asciiIcon: `   .-----.
+  ( MENU  )
+   \\ === /
+    _| |_`
     },
     lms: {
       id: 'lms',
@@ -68,17 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
       techStack: ['TypeScript', 'React', 'Next.js', 'PostgreSQL', 'Docker', 'Linux'],
       github: 'https://github.com/mohammadhosseini/lms',
       demo: 'https://lms.demo.app',
-      asciiIcon: `  .-----------.
-  | .-------. |
-  | | >_LMS | |
-  | '-------' |
-  | [=======] |
-  '-----------'`
+      asciiIcon: `    .-----.
+ .--| LMS |
+ |  | === |
+ '--------'`
     }
   };
 
   /* --------------------------------------------------------------------------
-     2. Tactile Audio Feedback (Synthesized via Web Audio API)
+     2. Tactile Audio Feedback (Web Audio API Synthesizer)
      -------------------------------------------------------------------------- */
   let audioCtx = null;
   let isSoundEnabled = localStorage.getItem('ascii_sound_enabled') === 'true';
@@ -87,61 +82,99 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function updateSoundButtonUI() {
     if (soundToggleBtn) {
-      soundToggleBtn.innerHTML = `<span class="control-label">[ ${isSoundEnabled ? '🔊 Sound' : '🔈 Mute'} ]</span>`;
+      soundToggleBtn.innerHTML = isSoundEnabled ? '[ 🔊 Sound: On ]' : '[ 🔈 Sound: Muted ]';
+      soundToggleBtn.setAttribute('title', isSoundEnabled ? 'Click to mute sound' : 'Click to enable tactile sound');
     }
   }
   updateSoundButtonUI();
 
-  function playKeyClickSound() {
-    if (!isSoundEnabled) return;
-
-    try {
-      if (!audioCtx) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (AudioContextClass) {
-          audioCtx = new AudioContextClass();
-        }
+  async function getAudioContext() {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
       }
-      if (!audioCtx || audioCtx.state === 'suspended') {
-        audioCtx?.resume();
-      }
-
-      // Vintage mechanical keyboard key-click blip
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(420, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.035);
-
-      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.035);
-
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start();
-      osc.stop(audioCtx.currentTime + 0.04);
-    } catch {
-      // Audio not permitted or supported; silent fail
     }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      await audioCtx.resume();
+    }
+    return audioCtx;
   }
 
-  soundToggleBtn?.addEventListener('click', () => {
+  function playKeyClickSound(type = 'click') {
+    if (!isSoundEnabled) return;
+
+    getAudioContext().then(ctx => {
+      if (!ctx || ctx.state !== 'running') return;
+      const now = ctx.currentTime;
+
+      if (type === 'enable-chime') {
+        // Confirmation chime when enabling sound
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        osc.frequency.setValueAtTime(783.99, now + 0.08); // G5
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.25);
+        return;
+      }
+
+      // Authentic tactile keypress click:
+      // High transient snap (mechanical switch impact)
+      const snapOsc = ctx.createOscillator();
+      const snapGain = ctx.createGain();
+      snapOsc.type = 'triangle';
+      snapOsc.frequency.setValueAtTime(1600, now);
+      snapOsc.frequency.exponentialRampToValueAtTime(300, now + 0.025);
+      snapGain.gain.setValueAtTime(0.25, now);
+      snapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+      snapOsc.connect(snapGain);
+      snapGain.connect(ctx.destination);
+      snapOsc.start(now);
+      snapOsc.stop(now + 0.028);
+
+      // Low resonant body thump
+      const thumpOsc = ctx.createOscillator();
+      const thumpGain = ctx.createGain();
+      thumpOsc.type = 'sine';
+      thumpOsc.frequency.setValueAtTime(280, now);
+      thumpOsc.frequency.exponentialRampToValueAtTime(90, now + 0.04);
+      thumpGain.gain.setValueAtTime(0.2, now);
+      thumpGain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+      thumpOsc.connect(thumpGain);
+      thumpGain.connect(ctx.destination);
+      thumpOsc.start(now);
+      thumpOsc.stop(now + 0.045);
+    }).catch(() => {
+      // Audio not permitted by browser; fail silently
+    });
+  }
+
+  soundToggleBtn?.addEventListener('click', async () => {
     isSoundEnabled = !isSoundEnabled;
     localStorage.setItem('ascii_sound_enabled', isSoundEnabled);
     updateSoundButtonUI();
-    showToast(`Tactile sound: ${isSoundEnabled ? 'ENABLED' : 'MUTED'}`);
+
     if (isSoundEnabled) {
-      playKeyClickSound();
+      // Direct user gesture initializes and unlocks Web Audio
+      await getAudioContext();
+      playKeyClickSound('enable-chime');
+      showToast('Tactile audio: ENABLED');
+    } else {
+      showToast('Tactile audio: MUTED');
     }
   });
 
-  // Attach click sound to interactive triggers
+  // Attach tactile click sound to interactive triggers
   document.addEventListener('click', (e) => {
     const target = e.target.closest('a, button, input');
-    if (target) {
-      playKeyClickSound();
+    if (target && target !== soundToggleBtn) {
+      playKeyClickSound('click');
     }
   });
 
@@ -159,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) {
-      themeMeta.content = theme === 'paper' ? '#F5F2EB' : (theme === 'dark' ? '#121314' : '#161208');
+      themeMeta.content = theme === 'paper' ? '#F5F2EB' : (theme === 'dark' ? '#131415' : '#151108');
     }
 
     const themeToggleBtn = document.getElementById('theme-toggle');
@@ -169,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dark: '[ ☾ Dark ]',
         amber: '[ ⚡ Amber ]'
       };
-      themeToggleBtn.innerHTML = `<span class="control-label">${labels[theme] || '[ ☀ Theme ]'}</span>`;
+      themeToggleBtn.innerHTML = labels[theme] || '[ ☀ Theme ]';
     }
   }
 
@@ -180,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextIndex = (THEMES.indexOf(currentTheme) + 1) % THEMES.length;
     const nextTheme = THEMES[nextIndex];
     applyTheme(nextTheme);
-    showToast(`Theme changed to: ${nextTheme.toUpperCase()}`);
+    showToast(`Theme: ${nextTheme.toUpperCase()}`);
   });
 
   /* --------------------------------------------------------------------------
@@ -295,7 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
      -------------------------------------------------------------------------- */
   const terminalModal = document.getElementById('terminal-modal');
   const cliTriggerBtn = document.getElementById('cli-trigger');
-  const cmdToggleBtn = document.getElementById('cmd-toggle');
   const cliCloseBtn = document.getElementById('cli-close-btn');
   const cliForm = document.getElementById('cli-form');
   const cliInput = document.getElementById('cli-input');
@@ -314,7 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   cliTriggerBtn?.addEventListener('click', openTerminal);
-  cmdToggleBtn?.addEventListener('click', openTerminal);
   cliCloseBtn?.addEventListener('click', closeTerminal);
 
   terminalModal?.addEventListener('click', (e) => {
@@ -358,12 +389,12 @@ document.addEventListener('DOMContentLoaded', () => {
     switch (cmd) {
       case 'help':
         appendCliOutput('Available commands:');
-        appendCliOutput('  projects          - list and explore featured projects');
-        appendCliOutput('  project <name>    - inspect a specific project (pakmart, kavich, anbarchi, lms)');
+        appendCliOutput('  projects          - list featured projects');
+        appendCliOutput('  project <name>    - inspect project (anbarchi, pakmart, kavich, lms)');
         appendCliOutput('  skills            - show technical stack summary');
         appendCliOutput('  about             - view developer background');
-        appendCliOutput('  contact           - display contact and profile links');
-        appendCliOutput('  theme [theme]     - view or switch theme (paper, dark, amber)');
+        appendCliOutput('  contact           - display contact details');
+        appendCliOutput('  theme [theme]     - switch theme (paper, dark, amber)');
         appendCliOutput('  sound [on|off]    - toggle mechanical audio clicks');
         appendCliOutput('  cat               - summon ASCII feline companion');
         appendCliOutput('  whoami            - display active identity');
@@ -373,23 +404,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       case 'projects':
         appendCliOutput('Featured Projects:');
-        appendCliOutput('  1. PakMart   - E-commerce Platform [Full-Stack]');
-        appendCliOutput('  2. Kavich    - Online Menu Platform [Web App]');
-        appendCliOutput('  3. Anbarchi  - Inventory Management [AI / Full-Stack]');
+        appendCliOutput('  1. Anbarchi  - Inventory Management [Full-Stack]');
+        appendCliOutput('  2. PakMart   - E-commerce Platform [Full-Stack]');
+        appendCliOutput('  3. Kavich    - Online Menu Platform [Full-Stack]');
         appendCliOutput('  4. LMS       - Learning Management System [Full-Stack]');
-        appendCliOutput("Type 'project <name>' or click [ View Project ] on the page to view architecture.");
+        appendCliOutput("Type 'project <name>' to view detailed architecture.");
         break;
 
       case 'project':
         if (!args[0]) {
-          appendCliOutput("Usage: project <pakmart|kavich|anbarchi|lms>");
+          appendCliOutput("Usage: project <anbarchi|pakmart|kavich|lms>");
         } else {
           const target = args[0].toLowerCase();
           if (PROJECTS_DATA[target]) {
             closeTerminal();
             openProjectModal(target);
           } else {
-            appendCliOutput(`Project '${args[0]}' not found. Available: pakmart, kavich, anbarchi, lms`);
+            appendCliOutput(`Project '${args[0]}' not found. Available: anbarchi, pakmart, kavich, lms`);
           }
         }
         break;
@@ -405,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'about':
         appendCliOutput("Mohammad Hosseini — Software Developer");
         appendCliOutput("Computer Science graduate from Golestan University.");
-        appendCliOutput("Passionate about building scalable web applications with clean architecture and Unix philosophy.");
+        appendCliOutput("Focusing on clean architecture, full-stack systems, and Unix philosophy.");
         break;
 
       case 'contact':
@@ -435,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
           isSoundEnabled = true;
           localStorage.setItem('ascii_sound_enabled', 'true');
           updateSoundButtonUI();
-          playKeyClickSound();
+          getAudioContext().then(() => playKeyClickSound('enable-chime'));
           appendCliOutput('Tactile sound: ON');
         } else if (args[0] === 'off') {
           isSoundEnabled = false;
@@ -448,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
 
       case 'cat':
-        appendCliOutput(`    /\\_/\\\n   ( o.o )   *purr*\n    > ^ <    Keep building...\n   /     \\\n  (       )\n  (  " "  )`);
+        appendCliOutput(`     /\\     /\\\n    /  '---'  \\\n   (  - •   • - )\n    \\    o    /\n  _  /       \\\n ( )/  |   |  \\\n  \\_\\  |___|  /`);
         break;
 
       case 'whoami':
@@ -466,10 +497,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeTerminal();
         break;
 
-      case 'sudo':
-        appendCliOutput("mohammad is not in the sudoers file. This incident will be reported.");
-        break;
-
       default:
         appendCliOutput(`Command not found: '${cmd}'. Type 'help' for available commands.`);
         break;
@@ -480,7 +507,6 @@ document.addEventListener('DOMContentLoaded', () => {
      8. Global Keyboard Shortcuts
      -------------------------------------------------------------------------- */
   document.addEventListener('keydown', (e) => {
-    // If user is actively typing in a form input, skip shortcuts unless Esc
     const isInputActive = ['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName);
 
     if (e.key === 'Escape') {

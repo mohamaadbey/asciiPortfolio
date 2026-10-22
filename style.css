@@ -110,6 +110,15 @@ button {
 pre, code {
   font-family: var(--font-mono);
   white-space: pre;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+pre::-webkit-scrollbar,
+code::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Accessibility Focus States */
@@ -156,6 +165,8 @@ input:focus-visible,
   padding-bottom: 2rem;
   border-bottom: 1px dotted var(--border-subtle);
   margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
 }
 
 .header-user .terminal-id {
@@ -179,6 +190,7 @@ input:focus-visible,
   list-style: none;
   gap: 2rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -214,12 +226,13 @@ input:focus-visible,
 }
 
 .ascii-name {
-  font-size: clamp(8px, 1.1vw, 11px);
+  font-size: clamp(7.5px, 1.1vw, 11px);
   line-height: 1.15;
   color: var(--text-main);
   margin-bottom: 1.5rem;
   user-select: all;
   letter-spacing: 0;
+  overflow: hidden;
 }
 
 .prompt-line {
@@ -295,10 +308,11 @@ input:focus-visible,
 }
 
 .ascii-mountain {
-  font-size: clamp(8px, 1.05vw, 11.5px);
+  font-size: clamp(7.5px, 1.05vw, 11.5px);
   line-height: 1.15;
   color: var(--text-main);
   user-select: text;
+  overflow: hidden;
 }
 
 /* --------------------------------------------------------------------------
@@ -644,7 +658,7 @@ input:focus-visible,
 .social-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -941,29 +955,216 @@ input:focus-visible,
 }
 
 /* --------------------------------------------------------------------------
-   13. Responsive Adaptations
+   13. Responsive Adaptations: Tablet (700px - 940px)
    -------------------------------------------------------------------------- */
-@media (max-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+@media (max-width: 940px) and (min-width: 681px) {
+  body {
+    padding: 2rem 1.5rem 4rem;
   }
 
-  .hero-right {
-    justify-content: flex-start;
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .ascii-name {
+    font-size: clamp(6.8px, 1.05vw, 8.5px);
+  }
+
+  .hero-role {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
 
   .ascii-mountain {
-    font-size: clamp(7px, 1.8vw, 11px);
+    font-size: clamp(6.5px, 0.98vw, 8.5px);
   }
 
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 2rem;
+  }
+
+  .terminal-box {
+    padding: 1.25rem;
+  }
+
+  .meter-row {
+    font-size: 0.82rem;
+  }
+
+  .skill-name {
+    width: 90px;
+  }
+
+  .skill-bar {
+    letter-spacing: -1.5px;
+  }
+
+  .cat-mascot-row {
+    gap: 1.75rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsive Adaptations: Mobile (< 680px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  body {
+    padding: 1.5rem 1rem 3.5rem;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .site-nav {
+    width: 100%;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .ascii-name {
+    font-size: clamp(6px, 2.05vw, 8px);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-role {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    margin-bottom: 1rem;
+  }
+
+  .hero-right {
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem auto 0;
+  }
+
+  .ascii-art-wrapper {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ascii-mountain {
+    font-size: clamp(5.4px, 1.6vw, 7.5px);
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .section-divider {
+    margin: 2.5rem 0;
+  }
+
+  .section-heading {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    padding: 1.5rem 1.25rem;
   }
 
   .skills-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+  }
+
+  .tree-items {
+    padding-left: 1.5rem;
+  }
+
+  .terminal-box {
+    padding: 1.25rem 1rem;
+    width: 100%;
+  }
+
+  .meter-row {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .skill-name {
+    width: 80px;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+  }
+
+  .skill-bar {
+    flex: 1;
+    min-width: 0;
+    letter-spacing: -2px;
+    font-size: 0.72rem;
+    overflow: hidden;
+  }
+
+  .skill-pct {
+    width: 34px;
+    font-size: 0.8rem;
+  }
+
+  .cat-mascot-row {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .ascii-cat {
+    font-size: 9.5px;
+  }
+
+  .cat-motto {
+    font-size: 0.85rem;
   }
 
   .about-grid {
@@ -974,57 +1175,34 @@ input:focus-visible,
   .badge-card {
     margin: 0 auto;
   }
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 1.25rem 0.75rem 3rem;
-  }
-
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .site-nav {
-    width: 100%;
-  }
-
-  .nav-list {
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .ascii-name {
-    font-size: clamp(6.5px, 2.3vw, 9px);
-    overflow-x: auto;
-  }
-
-  .ascii-mountain {
-    font-size: clamp(6px, 2vw, 9px);
-    overflow-x: auto;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
 
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
+    padding-top: 1.25rem;
   }
 
   .social-links {
     width: 100%;
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    justify-content: flex-start;
+  }
+
+  .modal-box {
+    padding: 1.25rem;
+    width: 95vw;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
   }
 }
 
 /* --------------------------------------------------------------------------
-   14. Reduced Motion Preferences
+   15. Reduced Motion Preferences
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
