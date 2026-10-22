@@ -166,3 +166,4 @@ All developer details and project configurations are centralized and simple to u
 - **Responsive Layout**: Designed to adapt from wide 4K screens down to 320px mobile viewports without horizontal page overflow.
 - **`prefers-reduced-motion`**: Respects OS motion sensitivity by instantly disabling transitions and cursor blinks.
 - **Semantic HTML5**: Full ARIA landmark roles, semantic heading hierarchy, and keyboard focus outlines.
+# asciiPortfolio
